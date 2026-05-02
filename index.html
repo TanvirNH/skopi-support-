@@ -1,1 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0A0A0B" />
+<meta name="description" content="Support &amp; help center for Skopi — the fast, private QR & barcode scanner for iPhone." />
+<title>Support · Skopi</title>
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='30' fill='white'/><path d='M22 22h6v6h-6zm14 0h6v6h-6zM22 36h6v6h-6zm14 0h6v6h-6z' fill='black'/></svg>" />
+<style>
+  :root {
+    --bg: #0A0A0B;
+    --bg-elev: #141416;
+    --bg-card: #1A1A1D;
+    --stroke: rgba(255, 255, 255, 0.08);
+    --stroke-strong: rgba(255, 255, 255, 0.16);
+    --text: #FFFFFF;
+    --text-2: rgba(255, 255, 255, 0.72);
+    --text-3: rgba(255, 255, 255, 0.50);
+    --hero-grad: linear-gradient(135deg, #B6FF6E 0%, #6EE7B7 50%, #60A5FA 100%);
+    --shadow: 0 24px 64px rgba(0, 0, 0, 0.55);
+    --radius-lg: 28px;
+    --radius-md: 18px;
+    --radius-sm: 12px;
+  }
 
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(96, 165, 250, 0.10), transparent 60%),
+      radial-gradient(900px 500px at -10% 20%, rgba(110, 231, 183, 0.08), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 56px 22px 96px;
+  }
+
+  header.hero {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px 8px 8px;
+    border: 1px solid var(--stroke-strong);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    margin-bottom: 28px;
+  }
+  .logo .mark {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: #fff; color: #000;
+    display: grid; place-items: center;
+  }
+  .logo .mark svg { width: 16px; height: 16px; }
+  .logo .name {
+    font-family: "SF Pro Rounded", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+  }
+
+  h1 {
+    font-family: "SF Pro Rounded", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 800;
+    font-size: clamp(36px, 5.4vw, 52px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin: 0 0 14px;
+    background: var(--hero-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .lede {
+    color: var(--text-2);
+    font-size: 17px;
+    margin: 0 auto;
+    max-width: 600px;
+  }
+
+  /* Contact card */
+  .contact-card {
+    margin-top: 30px;
+    background: var(--bg-card);
+    border: 1px solid var(--stroke);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 18px;
+    align-items: center;
+  }
+  .contact-card .icon-circle {
+    width: 56px; height: 56px;
+    border-radius: 18px;
+    background: rgba(110, 231, 183, 0.10);
+    border: 1px solid rgba(110, 231, 183, 0.25);
+    display: grid; place-items: center;
+  }
+  .contact-card .icon-circle svg { width: 26px; height: 26px; color: #B7F0D2; }
+  .contact-card .lbl { color: var(--text-3); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; }
+  .contact-card .val { font-size: 17px; font-weight: 600; word-break: break-all; }
+  .contact-card .val a { color: #fff; border-bottom: 1px solid rgba(255,255,255,0.18); }
+  .contact-card .val a:hover { border-bottom-color: #fff; }
+  .copy-btn {
+    border: 1px solid var(--stroke-strong);
+    background: rgba(255,255,255,0.04);
+    color: var(--text);
+    border-radius: 999px;
+    padding: 10px 16px;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s ease, border-color .15s ease;
+  }
+  .copy-btn:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.28); }
+  .copy-btn.copied { background: #B7F0D2; color: #0A0A0B; border-color: #B7F0D2; }
+
+  @media (max-width: 600px) {
+    .contact-card { grid-template-columns: auto 1fr; }
+    .copy-btn { grid-column: 1 / -1; justify-self: stretch; }
+  }
+
+  /* Section grid */
+  main { display: flex; flex-direction: column; gap: 18px; margin-top: 26px; }
+
+  section.card {
+    background: var(--bg-card);
+    border: 1px solid var(--stroke);
+    border-radius: var(--radius-lg);
+    padding: 26px 28px 22px;
+    box-shadow: var(--shadow);
+  }
+
+  section.card h2 {
+    font-family: "SF Pro Rounded", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px;
+  }
+
+  /* Quick links */
+  .quick-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .qlink {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 14px 16px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--stroke);
+    color: var(--text);
+    text-decoration: none;
+    transition: transform .15s ease, background .15s ease, border-color .15s ease;
+  }
+  .qlink:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--stroke-strong);
+    transform: translateY(-1px);
+  }
+  .qlink .ic {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--stroke);
+    display: grid; place-items: center;
+    flex: none;
+  }
+  .qlink .ic svg { width: 18px; height: 18px; color: var(--text); }
+  .qlink .ttl { font-weight: 600; }
+  .qlink .sub { color: var(--text-3); font-size: 12.5px; }
+
+  /* FAQ */
+  details.faq {
+    border-top: 1px solid var(--stroke);
+    padding: 16px 4px;
+  }
+  details.faq:first-of-type { border-top: 0; padding-top: 6px; }
+  details.faq summary {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 16px;
+  }
+  details.faq summary::-webkit-details-marker { display: none; }
+  details.faq summary .chev {
+    width: 22px; height: 22px;
+    flex: none;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--stroke);
+    display: grid; place-items: center;
+    transition: transform .2s ease;
+  }
+  details[open].faq summary .chev { transform: rotate(180deg); }
+  details.faq .body {
+    margin-top: 10px;
+    color: var(--text-2);
+    font-size: 15px;
+  }
+  details.faq .body p { margin: 8px 0; }
+  details.faq .body ul { padding-left: 22px; margin: 8px 0; }
+  details.faq .body li { margin: 4px 0; }
+  details.faq .body code {
+    background: rgba(255,255,255,0.05);
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-size: 13px;
+    border: 1px solid var(--stroke);
+  }
+
+  /* Step list */
+  ol.steps { list-style: none; padding: 0; counter-reset: s; margin: 0; }
+  ol.steps li {
+    counter-increment: s;
+    position: relative;
+    padding: 12px 12px 12px 50px;
+    margin: 6px 0;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--stroke);
+    border-radius: var(--radius-sm);
+    color: var(--text-2);
+  }
+  ol.steps li::before {
+    content: counter(s);
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 26px; height: 26px;
+    border-radius: 8px;
+    background: var(--hero-grad);
+    color: #0A0A0B;
+    font-weight: 800;
+    font-size: 13px;
+    display: grid; place-items: center;
+  }
+
+  strong { color: var(--text); font-weight: 600; }
+  a { color: #BEE7FF; text-decoration: none; border-bottom: 1px solid rgba(190, 231, 255, 0.35); transition: border-color .15s ease; }
+  a:hover { border-bottom-color: #BEE7FF; }
+
+  /* Pills */
+  .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; }
+  .pill {
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 6px 11px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--stroke-strong);
+    color: var(--text-2);
+  }
+
+  /* Highlights */
+  .note {
+    margin-top: 14px;
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    background: rgba(96, 165, 250, 0.08);
+    border: 1px solid rgba(96, 165, 250, 0.22);
+    color: var(--text);
+    font-size: 14.5px;
+  }
+
+  /* Feature table */
+  .feature-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 8px; }
+  table.features {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 540px;
+    font-size: 14.5px;
+  }
+  table.features th, table.features td {
+    text-align: left;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--stroke);
+    color: var(--text-2);
+    vertical-align: top;
+  }
+  table.features th {
+    color: var(--text-3);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    border-bottom-color: var(--stroke-strong);
+  }
+  table.features td:first-child, table.features th:first-child { padding-left: 4px; }
+  table.features td.feat { color: var(--text); font-weight: 600; white-space: nowrap; }
+  table.features td.free { color: var(--text-2); }
+  table.features td.pro { color: #B7F0D2; font-weight: 600; }
+
+  footer {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--stroke);
+    text-align: center;
+    color: var(--text-3);
+    font-size: 13px;
+  }
+  footer a { color: var(--text-2); }
+  ::selection { background: rgba(110, 231, 183, 0.35); color: #fff; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="logo">
+        <span class="mark">
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1" y="1" width="4" height="4" rx="0.5" fill="black"/>
+            <rect x="11" y="1" width="4" height="4" rx="0.5" fill="black"/>
+            <rect x="1" y="11" width="4" height="4" rx="0.5" fill="black"/>
+            <rect x="7" y="7" width="2" height="2" fill="black"/>
+            <rect x="11" y="7" width="2" height="2" fill="black"/>
+            <rect x="7" y="11" width="2" height="2" fill="black"/>
+            <rect x="13" y="13" width="2" height="2" fill="black"/>
+          </svg>
+        </span>
+        <span class="name">Skopi</span>
+      </div>
+      <h1>How can we help?</h1>
+      <p class="lede">Skopi is built and supported by an independent developer. Real human replies, usually within one business day.</p>
+
+      <div class="contact-card" role="region" aria-label="Contact email">
+        <div class="icon-circle" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="3" />
+            <path d="M2 7l10 6 10-6" />
+          </svg>
+        </div>
+        <div>
+          <div class="lbl">Support email</div>
+          <div class="val"><a href="mailto:tanvir4talk+appsupport@gmail.com?subject=Skopi%20Support">tanvir4talk+appsupport@gmail.com</a></div>
+        </div>
+        <button class="copy-btn" id="copyBtn" type="button" aria-live="polite">Copy</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Quick Links</h2>
+        <div class="quick-links">
+          <a class="qlink" href="#getting-started">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v18l7-5 7 5V3z"/></svg></span>
+            <span><span class="ttl">Getting Started</span><br><span class="sub">First scan in 30 seconds</span></span>
+          </a>
+          <a class="qlink" href="#scanning">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM18 18h3v3h-3z"/></svg></span>
+            <span><span class="ttl">QR &amp; Barcode Scanning</span><br><span class="sub">Modes, formats, batch</span></span>
+          </a>
+          <a class="qlink" href="#generator">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6v6H9z"/></svg></span>
+            <span><span class="ttl">Creating QR Codes</span><br><span class="sub">URL, WiFi, Vcard &amp; more</span></span>
+          </a>
+          <a class="qlink" href="#pro">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18 22l-6-4-6 4 1.5-8.5L2 9h7z"/></svg></span>
+            <span><span class="ttl">Skopi Pro</span><br><span class="sub">What you get, how to manage it</span></span>
+          </a>
+          <a class="qlink" href="#privacy-security">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V7z"/></svg></span>
+            <span><span class="ttl">Privacy &amp; Security</span><br><span class="sub">App lock, ads, your data</span></span>
+          </a>
+          <a class="qlink" href="#troubleshooting">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <span><span class="ttl">Troubleshooting</span><br><span class="sub">Camera, billing, history</span></span>
+          </a>
+        </div>
+      </section>
+
+      <section class="card" id="getting-started">
+        <h2>Getting Started</h2>
+        <ol class="steps">
+          <li>Open Skopi and tap <strong>Allow</strong> when iOS asks for camera access &mdash; the camera is the only permission you need to start scanning.</li>
+          <li>Point your iPhone at a QR code or barcode. Skopi auto-detects and saves the result to your private on-device history.</li>
+          <li>Tap a result to open a link, copy text, save a contact, join a Wi-Fi network, or look up a product. Long-press a result in History to share or delete it.</li>
+          <li>Want to create a code instead? Tap the <strong>Create</strong> tab to generate a QR code for a URL, plain text, Wi-Fi network, contact card, email, phone, or SMS.</li>
+        </ol>
+      </section>
+
+      <section class="card" id="scanning">
+        <h2>QR &amp; Barcode Scanning</h2>
+
+        <details class="faq" open>
+          <summary>Which codes can Skopi scan? <span class="chev" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="body">
+            <p>Skopi recognizes the following formats out of the box, using Apple&rsquo;s on-device Vision framework:</p>
+            <div class="pill-row">
+              <span class="pill">QR</span>
+              <span class="pill">EAN-13</span>
+              <span class="pill">EAN-8</span>
+              <span class="pill">UPC-A</span>
+              <span class="pill">UPC-E</span>
+              <span class="pill">Code 128</span>
+              <span class="pill">Code 39</span>
+              <span class="pill">Code 93</span>
+              <span class="pill">PDF417</span>
+              <span class="pill">Aztec</span>
+              <span class="pill">Data Matrix</span>
+              <span class="pill">ITF-14</span>
+              <span class="pill">Interleaved 2 of 5</span>
+            </div>
+            <p>This covers virtually every QR code, retail product barcode, package label, and 2D code you&rsquo;ll encounter in the wild.</p>
+          </div>
+        </details>
+
+        <details class="faq">
+          <summary>How do I switch between QR and barcode mode? <span class="chev" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="body">
+            <p>The Scanner has a small <strong>mode picker</strong> below the &ldquo;Skopi&rdquo; logo with three options:</p>
+            <ul>
+              <li><strong>Auto</strong> &mdash; detects QR codes <em>and</em> barcodes simultaneously. Best for everyday use.</li>
+              <li><strong>QR</strong> &mdash; locks detection to QR codes. Slightly faster, and avoids accidentally scanning a stray barcode in frame.</li>
+              <li><strong>Barcode</strong> &mdash; locks detection to retail and shipping barcode formats (EAN, UPC, Code 128, ITF-14, etc.). Best for shopping, inventory, and product lookups.</li>
+            </ul>
+            <p>Your choice is remembered between sessions.</p>
+          </div>
+        </details>
+
+        <details class="faq">
+          <summary>How do I scan a code from a photo I already have? <span class="chev" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="body">
+            <p>Tap the <strong>Gallery</strong> button at the bottom of the Scanner. Pick the image &mdash; Skopi only sees the photo you select, never your full library, thanks to the modern photo picker.</p>
+          </div>
+        </details>
+
+        <details class="faq">
+          <summary>What is Batch Scan? <span class="chev" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="body">
+            <p>Batch Scan (a Skopi Pro feature) lets you scan multiple codes back-to-back without the result sheet popping up between them. Each unique code is silently added to History, perfect for inventory or ticket-checking workflows. Tap <strong>End Batch</strong> to review them.</p>
+          </div>
+        </details>
+
+        <details class="faq">
+          <summary>How does product lookup work? <span class="chev" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="body">
+            <p>When Skopi recognizes an EAN-13/EAN-8/UPC product barcode, it looks up the product name, brand, and image from the public <a href="https://world.openfoodfacts.org" target="_blank" rel="noopener noreferrer">Open Food Facts</a> catalog. The lookup uses only the barcode digits and never any personal information about you. If a product isn&rsquo;t in the catalog, you&rsquo;ll still see the raw code.</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="card" id="generator">
+        <h2>Creating QR Codes</h2>
+
+        <details class="faq" open>
+          <summary>What can I create? <span class="chev" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="body">
+            <p>From the <strong>Create</strong> tab you can turn the following into a scannable QR code:</p>
+            <ul>
+              <li><strong>URL</strong> &mdash; any web link <span class="pill" style="margin-left:6px">Free</span></li>
+              <li><strong>Text</strong> &mdash; plain text up to several KB <span class="pill" style="margin-left:6px">Free</span></li>
+              <li><strong>Wi-Fi</strong> &mdash; SSID + password, scanned to auto-join <span class="pill" style="margin-left:6px">Pro</span></li>
+              <li><strong>Contact</strong> (vCard) &mdash; name, phone, email, address, organization <span class="pill" style="margin-left:6px">Pro</span></li>
+              <li><strong>Email</strong> &mdash; mailto with optional subject and body <span class="pill" style="margin-left:6px">Pro</span></li>
+              <li><strong>Phone</strong> &mdash; tel: link <span class="pill" style="margin-left:6px">Pro</span></li>
+              <li><strong>SMS</strong> &mdash; SMS prefilled with number and message <span class="pill" style="margin-left:6px">Pro</span></li>
+            </ul>
+            <p>Tap <strong>Save</strong> to write the code to Photos, or <strong>Share</strong> to send it via Messages, AirDrop, email, etc.</p>
+          </div>
+        </details>
+
+        <details class="faq">
+          <summary>Can I customize colors and add a logo? <span class="chev" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="body">
+            <p>Yes &mdash; with Skopi Pro. You can pick from preset color palettes, set custom foreground and background colors, and drop a logo (such as your brand mark) into the center of the code. Skopi keeps the logo small enough that the code remains scannable.</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="card" id="pro">
+        <h2>Skopi Pro</h2>
+        <p>Skopi is free to use forever. <strong>Skopi Pro</strong> is an optional auto-renewing subscription that removes ads and unlocks the full feature set. Below is the complete breakdown.</p>
+
+        <div class="feature-table-wrap">
+          <table class="features">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Free</th>
+                <th>Pro</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="feat">QR &amp; barcode scanning</td><td class="free">Unlimited, all formats</td><td class="pro">Unlimited, all formats</td></tr>
+              <tr><td class="feat">Scan from photo library</td><td class="free">Yes</td><td class="pro">Yes</td></tr>
+              <tr><td class="feat">Scan history</td><td class="free">Latest 15 visible (older entries locked, never deleted)</td><td class="pro">Unlimited &amp; searchable</td></tr>
+              <tr><td class="feat">Hide duplicate scans</td><td class="free">No</td><td class="pro">Yes</td></tr>
+              <tr><td class="feat">Folders</td><td class="free">No</td><td class="pro">Unlimited</td></tr>
+              <tr><td class="feat">CSV export</td><td class="free">No</td><td class="pro">Yes</td></tr>
+              <tr><td class="feat">Batch scan mode</td><td class="free">No</td><td class="pro">Yes</td></tr>
+              <tr><td class="feat">QR generator types</td><td class="free">URL &amp; Text only</td><td class="pro">All 7 types (URL, Text, Wi-Fi, Vcard, Email, Phone, SMS)</td></tr>
+              <tr><td class="feat">Custom colors &amp; logo on generated codes</td><td class="free">No</td><td class="pro">Yes</td></tr>
+              <tr><td class="feat">App Lock (Face ID / Touch ID / PIN)</td><td class="free">No</td><td class="pro">Yes</td></tr>
+              <tr><td class="feat">Default browser preference</td><td class="free">System default only</td><td class="pro">Choose Chrome, Brave, Firefox, etc.</td></tr>
+              <tr><td class="feat">Product lookup on barcodes</td><td class="free">Yes</td><td class="pro">Yes</td></tr>
+              <tr><td class="feat">Home Screen widget</td><td class="free">Yes</td><td class="pro">Yes</td></tr>
+              <tr><td class="feat">Ads</td><td class="free">Banner + occasional full-screen</td><td class="pro">No ads</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note">A free trial is offered for both Monthly and Yearly plans. You won&rsquo;t be charged during the trial and can cancel anytime in <em>iPhone Settings &rarr; Apple ID &rarr; Subscriptions</em>. Pricing is shown in your local currency at checkout.</div>
+
+        <details class="faq">
+          <summary>How do I restore a purchase on a new device? <span class="chev" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="body">
+            <p>Sign in to the same Apple ID you used to purchase, then open Skopi and go to <strong>Settings &rarr; Restore Purchases</strong>, or tap <strong>Restore Purchases</strong> on the paywall screen. Skopi Pro is tied to your Apple ID and works across every device signed in to that account.</p>
+          </div>
+        </details>
+
+        <details class="faq">
+          <summary>How do I cancel my subscription? <span class="chev" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="body">
+            <p>Subscriptions are managed entirely by Apple, not by Skopi. To cancel: open <em>iPhone Settings</em> &rarr; tap your name at the top &rarr; <strong>Subscriptions</strong> &rarr; <strong>Skopi</strong> &rarr; <strong>Cancel Subscription</strong>. You&rsquo;ll continue to have Pro access until the end of the current billing period.</p>
+          </div>
+        </details>
+
+        <details class="faq">
+          <summary>How do I get a refund? <span class="chev" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="body">
+            <p>Apple handles refunds for all App Store purchases. Visit <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener noreferrer">reportaproblem.apple.com</a>, sign in with your Apple ID, find the Skopi charge, and select &ldquo;Request a Refund&rdquo;. Email us if there&rsquo;s anything we can help clarify on Apple&rsquo;s side.</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="card" id="privacy-security">
+        <h2>Privacy &amp; Security</h2>
+
+        <details class="faq" open>
+          <summary>Where is my scan history stored? <span class="chev" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="body">
+            <p>Only on your iPhone. Skopi has no servers, no accounts, and no cloud sync. Your scan history is stored in a local on-device database (Apple&rsquo;s SwiftData) and is encrypted at rest by iOS using your device passcode.</p>
+            <p>Read the full <a href="https://tanvirnh.github.io/skopi-privacy-policy/">Privacy Policy</a>.</p>
+          </div>
+        </details>
+
+        <details class="faq">
+          <summary>How do I lock the app with Face ID or a PIN? <span class="chev" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="body">
+            <p>Open <strong>Settings &rarr; App Lock</strong> in Skopi (Pro feature) and choose Face ID, Touch ID, or a 4-digit PIN. Once enabled, Skopi will require authentication every time the app is opened or returns from the background.</p>
+          </div>
+        </details>
+
+        <details class="faq">
+          <summary>Why am I seeing ads? Can I turn them off? <span class="chev" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="body">
+            <p>Ads keep Skopi free for everyone. They&rsquo;re served by Google AdMob, never overlap the camera viewfinder, and are frequency-capped. Two ways to turn them off:</p>
+            <ul>
+              <li><strong>Upgrade to Skopi Pro</strong> &mdash; instantly removes all ads.</li>
+              <li><strong>Decline tracking</strong> in iOS Settings &rarr; Privacy &amp; Security &rarr; Tracking &rarr; Skopi to stop personalized ads (you&rsquo;ll still see non-personalized ads in the free tier).</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="faq">
+          <summary>How do I delete all my scan history? <span class="chev" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="body">
+            <p>Open <strong>Settings &rarr; Clear All History</strong> in Skopi to wipe every saved scan. To delete a single entry, swipe left on it in the History tab and tap <strong>Delete</strong>. Uninstalling Skopi removes the local database in full.</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="card" id="troubleshooting">
+        <h2>Troubleshooting</h2>
+
+        <details class="faq" open>
+          <summary>The camera doesn&rsquo;t open. <span class="chev" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="body">
+            <p>Skopi needs camera access to scan. Open <em>iPhone Settings &rarr; Skopi &rarr; Camera</em> and make sure it&rsquo;s enabled. If it&rsquo;s already on, force-quit the app (swipe up in the App Switcher) and reopen.</p>
+          </div>
+        </details>
+
+        <details class="faq">
+          <summary>The scanner can&rsquo;t detect my code. <span class="chev" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="body">
+            <p>A few things to try:</p>
+            <ul>
+              <li>Hold the iPhone 6&ndash;12&Prime; (15&ndash;30&nbsp;cm) from the code and let it auto-focus.</li>
+              <li>If the room is dim, tap the <strong>Flash</strong> button to turn on the torch.</li>
+              <li>For long, narrow product barcodes (EAN, UPC, Code 128), switch the mode to <strong>Barcode</strong>; for square codes, use <strong>QR</strong>. <strong>Auto</strong> handles both but can be slightly slower in tricky lighting.</li>
+              <li>Wipe the camera lens &mdash; smudges are the #1 cause of failed scans.</li>
+              <li>For codes printed at very small sizes, get closer until the code fills at least a quarter of the framing brackets.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="faq">
+          <summary>I purchased Pro but don&rsquo;t see my features. <span class="chev" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="body">
+            <p>Tap <strong>Restore Purchases</strong> in Settings or on the paywall screen. Make sure you&rsquo;re signed into the same Apple ID you used to purchase. If your purchase is still pending Family Sharing approval (&ldquo;Ask to Buy&rdquo;), it will activate once approved.</p>
+          </div>
+        </details>
+
+        <details class="faq">
+          <summary>My older scans say &ldquo;locked.&rdquo; Are they gone? <span class="chev" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="body">
+            <p>No. The free tier shows your most recent 15 scans. Older entries are still safely on your device &mdash; they&rsquo;ll all become visible the moment you start a Pro trial or subscription, and they&rsquo;re never auto-deleted.</p>
+          </div>
+        </details>
+
+        <details class="faq">
+          <summary>App Lock won&rsquo;t accept my Face ID. <span class="chev" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="body">
+            <p>If biometric auth fails repeatedly (e.g. Face ID is locked out by iOS), Skopi will fall back to your device passcode. Re-enable biometrics in <em>iPhone Settings &rarr; Face ID &amp; Passcode &rarr; Skopi</em> if needed. If you set a Skopi PIN, you can always use it as a backup.</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="card" id="contact">
+        <h2>Still need help?</h2>
+        <p>Email <a href="mailto:tanvir4talk+appsupport@gmail.com?subject=Skopi%20Support">tanvir4talk+appsupport@gmail.com</a> with the following so we can resolve it quickly:</p>
+        <ul>
+          <li>iPhone model and iOS version (<em>Settings &rarr; General &rarr; About</em>)</li>
+          <li>Skopi version (<em>Settings tab inside Skopi</em>, bottom of the page)</li>
+          <li>What you tried, what happened, and what you expected to happen</li>
+          <li>A screenshot or short screen recording, if it&rsquo;s a visual issue</li>
+        </ul>
+        <p style="color: var(--text-3); font-size: 13.5px; margin-top: 14px;">For privacy questions or to exercise your data rights, please refer to our <a href="https://tanvirnh.github.io/skopi-privacy-policy/">Privacy Policy</a>.</p>
+      </section>
+
+      <footer>
+        <div>&copy; <span id="year">2026</span> Skopi. Made with care.</div>
+        <div style="margin-top: 8px;">
+          <a href="https://tanvirnh.github.io/skopi-privacy-policy/">Privacy Policy</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const btn = document.getElementById('copyBtn');
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('tanvir4talk+appsupport@gmail.com');
+        btn.textContent = 'Copied';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 1800);
+      } catch {
+        const a = document.createElement('a');
+        a.href = 'mailto:tanvir4talk+appsupport@gmail.com';
+        a.click();
+      }
+    });
+  </script>
+</body>
+</html>
