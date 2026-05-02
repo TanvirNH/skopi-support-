@@ -127,27 +127,67 @@
   }
   .contact-card .icon-circle svg { width: 26px; height: 26px; color: #B7F0D2; }
   .contact-card .lbl { color: var(--text-3); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; }
-  .contact-card .val { font-size: 17px; font-weight: 600; word-break: break-all; }
-  .contact-card .val a { color: #fff; border-bottom: 1px solid rgba(255,255,255,0.18); }
-  .contact-card .val a:hover { border-bottom-color: #fff; }
-  .copy-btn {
-    border: 1px solid var(--stroke-strong);
-    background: rgba(255,255,255,0.04);
-    color: var(--text);
+  .contact-card .val { font-size: 15px; color: var(--text-2); }
+
+  /* Email Support Button — used in contact card and Still need help section */
+  .email-support-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 20px;
     border-radius: 999px;
-    padding: 10px 16px;
+    border: none;
+    background: var(--hero-grad);
+    color: #0A0A0B;
     font: inherit;
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity .15s ease, transform .15s ease;
+    white-space: nowrap;
+  }
+  .email-support-btn:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+    border-bottom: none;
+  }
+  .email-support-btn svg {
+    width: 15px; height: 15px; flex: none;
+  }
+
+  /* Inline text email support button (used in Still need help section) */
+  .email-support-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--stroke-strong);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    font: inherit;
+    font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: background .15s ease, border-color .15s ease;
+    text-decoration: none;
+    transition: background .15s ease, border-color .15s ease, transform .15s ease;
+    white-space: nowrap;
+    vertical-align: middle;
   }
-  .copy-btn:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.28); }
-  .copy-btn.copied { background: #B7F0D2; color: #0A0A0B; border-color: #B7F0D2; }
+  .email-support-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.28);
+    transform: translateY(-1px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+  }
+  .email-support-btn-secondary svg {
+    width: 14px; height: 14px; flex: none; color: #B7F0D2;
+  }
 
   @media (max-width: 600px) {
     .contact-card { grid-template-columns: auto 1fr; }
-    .copy-btn { grid-column: 1 / -1; justify-self: stretch; }
+    .email-support-btn { grid-column: 1 / -1; justify-self: stretch; justify-content: center; }
   }
 
   /* Section grid */
@@ -362,7 +402,8 @@
       <h1>How can we help?</h1>
       <p class="lede">Skopi is built and supported by an independent developer. Real human replies, usually within one business day.</p>
 
-      <div class="contact-card" role="region" aria-label="Contact email">
+      <!-- ✅ CHANGED: email is now hidden behind the Email Support button -->
+      <div class="contact-card" role="region" aria-label="Contact support">
         <div class="icon-circle" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="4" width="20" height="16" rx="3" />
@@ -370,10 +411,16 @@
           </svg>
         </div>
         <div>
-          <div class="lbl">Support email</div>
-          <div class="val"><a href="mailto:tanvir4talk+appsupport@gmail.com?subject=Skopi%20Support">tanvir4talk+appsupport@gmail.com</a></div>
+          <div class="lbl">Support</div>
+          <div class="val">We typically reply within one business day.</div>
         </div>
-        <button class="copy-btn" id="copyBtn" type="button" aria-live="polite">Copy</button>
+        <a class="email-support-btn" href="mailto:tanvir4talk+appsupport@gmail.com?subject=Skopi%20Support" aria-label="Email Skopi Support">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="3"/>
+            <path d="M2 7l10 6 10-6"/>
+          </svg>
+          Email Support
+        </a>
       </div>
     </header>
 
@@ -646,16 +693,24 @@
         </details>
       </section>
 
+      <!-- ✅ CHANGED: email hidden behind Email Support button in the Still need help section -->
       <section class="card" id="contact">
         <h2>Still need help?</h2>
-        <p>Email <a href="mailto:tanvir4talk+appsupport@gmail.com?subject=Skopi%20Support">tanvir4talk+appsupport@gmail.com</a> with the following so we can resolve it quickly:</p>
+        <p>Tap the button below to email us with the following details so we can resolve it quickly:</p>
         <ul>
           <li>iPhone model and iOS version (<em>Settings &rarr; General &rarr; About</em>)</li>
           <li>Skopi version (<em>Settings tab inside Skopi</em>, bottom of the page)</li>
           <li>What you tried, what happened, and what you expected to happen</li>
           <li>A screenshot or short screen recording, if it&rsquo;s a visual issue</li>
         </ul>
-        <p style="color: var(--text-3); font-size: 13.5px; margin-top: 14px;">For privacy questions or to exercise your data rights, please refer to our <a href="https://tanvirnh.github.io/skopi-privacy-policy/">Privacy Policy</a>.</p>
+        <a class="email-support-btn-secondary" href="mailto:tanvir4talk+appsupport@gmail.com?subject=Skopi%20Support" aria-label="Email Skopi Support">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="3"/>
+            <path d="M2 7l10 6 10-6"/>
+          </svg>
+          Email Support
+        </a>
+        <p style="color: var(--text-3); font-size: 13.5px; margin-top: 18px;">For privacy questions or to exercise your data rights, please refer to our <a href="https://tanvirnh.github.io/skopi-privacy-policy/">Privacy Policy</a>.</p>
       </section>
 
       <footer>
@@ -669,22 +724,6 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    const btn = document.getElementById('copyBtn');
-    btn.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText('tanvir4talk+appsupport@gmail.com');
-        btn.textContent = 'Copied';
-        btn.classList.add('copied');
-        setTimeout(() => {
-          btn.textContent = 'Copy';
-          btn.classList.remove('copied');
-        }, 1800);
-      } catch {
-        const a = document.createElement('a');
-        a.href = 'mailto:tanvir4talk+appsupport@gmail.com';
-        a.click();
-      }
-    });
   </script>
 </body>
 </html>
