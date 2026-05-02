@@ -402,7 +402,6 @@
       <h1>How can we help?</h1>
       <p class="lede">Skopi is built and supported by an independent developer. Real human replies, usually within one business day.</p>
 
-      <!-- ✅ CHANGED: email is now hidden behind the Email Support button -->
       <div class="contact-card" role="region" aria-label="Contact support">
         <div class="icon-circle" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -577,7 +576,7 @@
               <tr><td class="feat">Batch scan mode</td><td class="free">No</td><td class="pro">Yes</td></tr>
               <tr><td class="feat">QR generator types</td><td class="free">URL &amp; Text only</td><td class="pro">All 7 types (URL, Text, Wi-Fi, Vcard, Email, Phone, SMS)</td></tr>
               <tr><td class="feat">Custom colors &amp; logo on generated codes</td><td class="free">No</td><td class="pro">Yes</td></tr>
-              <tr><td class="feat">App Lock (Face ID / Touch ID / PIN)</td><td class="free">No</td><td class="pro">Yes</td></tr>
+              <tr><td class="feat">App Lock (Face ID)</td><td class="free">No</td><td class="pro">Yes</td></tr>
               <tr><td class="feat">Default browser preference</td><td class="free">System default only</td><td class="pro">Choose Chrome, Brave, Firefox, etc.</td></tr>
               <tr><td class="feat">Product lookup on barcodes</td><td class="free">Yes</td><td class="pro">Yes</td></tr>
               <tr><td class="feat">Home Screen widget</td><td class="free">Yes</td><td class="pro">Yes</td></tr>
@@ -622,9 +621,9 @@
         </details>
 
         <details class="faq">
-          <summary>How do I lock the app with Face ID or a PIN? <span class="chev" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <summary>How do I lock the app with Face ID? <span class="chev" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
           <div class="body">
-            <p>Open <strong>Settings &rarr; App Lock</strong> in Skopi (Pro feature) and choose Face ID, Touch ID, or a 4-digit PIN. Once enabled, Skopi will require authentication every time the app is opened or returns from the background.</p>
+            <p>Open <strong>Settings &rarr; App Lock</strong> in Skopi (Pro feature) and enable Face ID. Once enabled, Skopi will require authentication every time the app is opened or returns from the background.</p>
           </div>
         </details>
 
@@ -688,12 +687,11 @@
         <details class="faq">
           <summary>App Lock won&rsquo;t accept my Face ID. <span class="chev" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
           <div class="body">
-            <p>If biometric auth fails repeatedly (e.g. Face ID is locked out by iOS), Skopi will fall back to your device passcode. Re-enable biometrics in <em>iPhone Settings &rarr; Face ID &amp; Passcode &rarr; Skopi</em> if needed. If you set a Skopi PIN, you can always use it as a backup.</p>
+            <p>If Face ID is locked out by iOS, Skopi will fall back to your device passcode. Re-enable Face ID in <em>iPhone Settings &rarr; Face ID &amp; Passcode &rarr; Skopi</em> if needed.</p>
           </div>
         </details>
       </section>
 
-      <!-- ✅ CHANGED: email hidden behind Email Support button in the Still need help section -->
       <section class="card" id="contact">
         <h2>Still need help?</h2>
         <p>Tap the button below to email us with the following details so we can resolve it quickly:</p>
